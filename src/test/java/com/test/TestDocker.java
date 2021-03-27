@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import com.beust.jcommander.Parameter;
 
 public class TestDocker {
-	RemoteWebDriver driver ;
+	
 	
 	@Test
 	@Parameters("browser")
@@ -29,17 +29,18 @@ public class TestDocker {
 		}
 
 
-		driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
+		RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
 
 		driver.get("https://google.com");
 		System.out.println(driver.getTitle());
 
 
 		Thread.sleep(15000);
+		driver.quit();
 	}
 
 		@AfterMethod
 		public  void teardown() {
-			driver.quit();
+			
 		}
 }
